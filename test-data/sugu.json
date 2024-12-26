@@ -1,0 +1,26 @@
+{
+    "servers": [
+      {
+        "serverId": "server-1",
+        "serverName": "Production Web Server",
+        "serverType": "Linux",
+        "osName": "Ubuntu",
+        "osVersion": "20.04",
+        "status": "Active",
+        "metrics": {
+          "cpu": {
+            "cores": 4,
+            "utilization": 65.0
+          },
+          "memory": {
+            "total": 16000,
+            "used": 12000
+          },
+          "storage": {
+            "total": 500000,
+            "used": 350000
+          }
+        }
+      }
+    ]
+  }

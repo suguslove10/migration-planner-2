@@ -1,0 +1,132 @@
+{
+  "servers": [
+      {
+          "serverId": "prod-web-01",
+          "serverName": "Production Web Server",
+          "serverType": "Linux",
+          "metrics": {
+              "cpu": {
+                  "cores": 8,
+                  "utilization": 75
+              },
+              "memory": {
+                  "total": 32768,
+                  "used": 24576
+              },
+              "storage": {
+                  "total": 512000,
+                  "used": 358400
+              },
+              "network": {
+                  "bandwidth": 1000
+              }
+          },
+          "applications": [
+              {
+                  "name": "Nginx",
+                  "version": "1.20.1",
+                  "type": "web_server",
+                  "status": "running"
+              },
+              {
+                  "name": "Node.js",
+                  "version": "16.14.0",
+                  "type": "application",
+                  "status": "running"
+              }
+          ],
+          "dependencies": [
+              {
+                  "name": "Redis Cache",
+                  "type": "cache",
+                  "criticality": "high"
+              },
+              {
+                  "name": "MySQL Database",
+                  "type": "database",
+                  "criticality": "critical"
+              }
+          ]
+      },
+      {
+          "serverId": "prod-db-01",
+          "serverName": "Production Database Server",
+          "serverType": "Linux",
+          "metrics": {
+              "cpu": {
+                  "cores": 16,
+                  "utilization": 85
+              },
+              "memory": {
+                  "total": 65536,
+                  "used": 52428
+              },
+              "storage": {
+                  "total": 1024000,
+                  "used": 819200
+              },
+              "network": {
+                  "bandwidth": 2000
+              }
+          },
+          "applications": [
+              {
+                  "name": "MySQL",
+                  "version": "8.0.28",
+                  "type": "database",
+                  "status": "running"
+              },
+              {
+                  "name": "Redis",
+                  "version": "6.2.6",
+                  "type": "cache",
+                  "status": "running"
+              }
+          ],
+          "dependencies": [
+              {
+                  "name": "Backup Storage",
+                  "type": "storage",
+                  "criticality": "high"
+              }
+          ]
+      },
+      {
+          "serverId": "prod-cache-01",
+          "serverName": "Production Cache Server",
+          "serverType": "Linux",
+          "metrics": {
+              "cpu": {
+                  "cores": 4,
+                  "utilization": 60
+              },
+              "memory": {
+                  "total": 16384,
+                  "used": 13107
+              },
+              "storage": {
+                  "total": 256000,
+                  "used": 153600
+              },
+              "network": {
+                  "bandwidth": 1500
+              }
+          },
+          "applications": [
+              {
+                  "name": "Redis",
+                  "version": "6.2.6",
+                  "type": "cache",
+                  "status": "running"
+              },
+              {
+                  "name": "Memcached",
+                  "version": "1.6.15",
+                  "type": "cache",
+                  "status": "running"
+              }
+          ],
+          "dependencies": []
+      }
+  ]
+}

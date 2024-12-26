@@ -1,0 +1,46 @@
+{
+    "servers": [
+        // Legacy System
+        {
+            "serverId": "legacy-app-01",
+            "serverName": "Legacy Application Server",
+            "serverType": "Windows",
+            "metrics": {
+                "cpu": {
+                    "cores": 4,
+                    "utilization": 40
+                },
+                "memory": {
+                    "total": 8192,
+                    "used": 6553
+                },
+                "storage": {
+                    "total": 512000,
+                    "used": 435200
+                },
+                "network": {
+                    "bandwidth": 500
+                }
+            },
+            "applications": [
+                {
+                    "name": "IIS",
+                    "version": "8.5",
+                    "type": "web_server"
+                },
+                {
+                    "name": ".NET Framework",
+                    "version": "4.5",
+                    "type": "framework"
+                }
+            ],
+            "dependencies": [
+                {
+                    "name": "MS SQL Database",
+                    "type": "database",
+                    "criticality": "high"
+                }
+            ]
+        }
+    ]
+}

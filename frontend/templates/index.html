@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Migration Strategy Planner</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fab fa-aws"></i> Cloud Migration Strategy Planner</h1>
+            <p>Optimize your journey to AWS Cloud with our Free Tier planner</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- AWS Services Overview -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-cloud"></i> AWS Free Tier Services</h2>
+            </div>
+            <div class="card-body">
+                <div class="aws-services-container">
+                    <p>Utilizing AWS Free Tier services for cost-effective cloud migration</p>
+                    <div class="aws-service-grid">
+                        <div class="aws-service-item">
+                            <i class="fas fa-search"></i>
+                            <span>Discovery Service</span>
+                        </div>
+                        <div class="aws-service-item">
+                            <i class="fas fa-database"></i>
+                            <span>DynamoDB</span>
+                        </div>
+                        <div class="aws-service-item">
+                            <i class="fas fa-server"></i>
+                            <span>Lambda</span>
+                        </div>
+                        <div class="aws-service-item">
+                            <i class="fas fa-folder"></i>
+                            <span>S3</span>
+                        </div>
+                        <div class="aws-service-item">
+                            <i class="fas fa-network-wired"></i>
+                            <span>API Gateway</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration Section -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-cogs"></i> Configuration</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="awsRegion">AWS Region</label>
+                    <select id="awsRegion" class="form-control">
+                        <option value="us-east-1">US East (N. Virginia)</option>
+                        <option value="ap-south-1">Asia Pacific (Mumbai)</option>
+                    </select>
+                </div>
+                <div id="configStatus"></div>
+            </div>
+        </section>
+
+        <!-- Server Discovery Section -->
+        <div class="dashboard-grid">
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-server"></i> Discovered Servers</h2>
+                    <div class="button-group">
+                        <button id="refreshServers" class="btn btn-primary">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                        <button id="uploadTestData" class="btn btn-secondary">
+                            <i class="fas fa-upload"></i> Upload Test Data
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="serverList" class="server-list"></div>
+                </div>
+            </section>
+
+            <!-- Analysis Results -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-chart-bar"></i> Analysis</h2>
+                </div>
+                <div id="analysisResults" class="card-body">
+                    <div class="placeholder-text">
+                        <i class="fas fa-search"></i>
+                        <p>Select a server to view analysis</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cost Estimation -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-coins"></i> Cost Estimation</h2>
+                </div>
+                <div id="costEstimate" class="card-body">
+                    <div class="placeholder-text">
+                        <i class="fas fa-calculator"></i>
+                        <p>Select a server to view cost estimates</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Migration Roadmap -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-map-marked-alt"></i> Migration Roadmap</h2>
+                <button id="generateRoadmap" class="btn btn-primary">
+                    <i class="fas fa-magic"></i> Generate Roadmap
+                </button>
+            </div>
+            <div id="roadmapTimeline" class="card-body roadmap-container">
+                <div class="timeline">
+                    <div class="placeholder-text">
+                        <i class="fas fa-route"></i>
+                        <p>Generate a roadmap to view the migration timeline</p>
+                    </div>
+                </div>
+                <div class="project-summary" style="display: none;">
+                    <h3><i class="fas fa-clipboard-check"></i> Project Summary</h3>
+                    <div class="summary-details"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Migration Progress -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-tasks"></i> Migration Progress</h2>
+            </div>
+            <div class="card-body">
+                <div class="progress-stats">
+                    <div class="metric-item">
+                        <h3>Servers Analyzed</h3>
+                        <p id="serversAnalyzed">0/0</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="analysisProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Migration Progress</h3>
+                        <p id="migrationProgress">0%</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="migrationProgressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Free Tier Usage -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-chart-pie"></i> AWS Free Tier Usage</h2>
+            </div>
+            <div class="card-body">
+                <div class="usage-metrics">
+                    <div class="metric-item">
+                        <h3>Lambda Functions</h3>
+                        <p id="lambdaUsage">0/1,000,000 invocations</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="lambdaProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <h3>S3 Storage</h3>
+                        <p id="s3Usage">0/5 GB</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="s3Progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <h3>DynamoDB</h3>
+                        <p id="dynamodbUsage">0/25 GB</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="dynamodbProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <h3>API Gateway</h3>
+                        <p id="apiGatewayUsage">0/1M requests</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="apiGatewayProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Test Data Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-upload"></i> Upload Test Data</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="testDataFile">Select JSON File</label>
+                        <input type="file" id="testDataFile" name="file" accept=".json" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingIndicator" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Cloud Migration Strategy Planner | Using AWS Free Tier Services</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

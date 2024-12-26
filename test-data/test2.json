@@ -1,0 +1,68 @@
+{
+    "servers": [
+        // Microservices Architecture
+        {
+            "serverId": "api-gateway-01",
+            "serverName": "API Gateway Server",
+            "serverType": "Linux",
+            "metrics": {
+                "cpu": {
+                    "cores": 8,
+                    "utilization": 70
+                },
+                "memory": {
+                    "total": 32768,
+                    "used": 24576
+                },
+                "storage": {
+                    "total": 256000,
+                    "used": 179200
+                },
+                "network": {
+                    "bandwidth": 2000
+                }
+            },
+            "applications": [
+                {
+                    "name": "Kong",
+                    "version": "2.8.1",
+                    "type": "gateway"
+                }
+            ]
+        },
+        {
+            "serverId": "user-service-01",
+            "serverName": "User Service",
+            "serverType": "Linux",
+            "metrics": {
+                "cpu": {
+                    "cores": 4,
+                    "utilization": 60
+                },
+                "memory": {
+                    "total": 16384,
+                    "used": 11468
+                },
+                "storage": {
+                    "total": 102400,
+                    "used": 71680
+                },
+                "network": {
+                    "bandwidth": 1000
+                }
+            },
+            "applications": [
+                {
+                    "name": "Node.js",
+                    "version": "16.14.2",
+                    "type": "application"
+                },
+                {
+                    "name": "MongoDB",
+                    "version": "5.0.6",
+                    "type": "database"
+                }
+            ]
+        }
+    ]
+}

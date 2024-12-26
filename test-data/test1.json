@@ -1,0 +1,118 @@
+{
+    "servers": [
+        {
+            "serverId": "crm-web-01",
+            "serverName": "CRM Web Application",
+            "serverType": "Linux",
+            "metrics": {
+                "cpu": {
+                    "cores": 12,
+                    "utilization": 82
+                },
+                "memory": {
+                    "total": 49152,
+                    "used": 41287
+                },
+                "storage": {
+                    "total": 819200,
+                    "used": 655360
+                },
+                "network": {
+                    "bandwidth": 1800
+                }
+            },
+            "applications": [
+                {
+                    "name": "Apache",
+                    "version": "2.4.52",
+                    "type": "web_server",
+                    "status": "running"
+                },
+                {
+                    "name": "Ruby on Rails",
+                    "version": "6.1.4",
+                    "type": "application",
+                    "status": "running"
+                }
+            ],
+            "dependencies": [
+                {
+                    "name": "PostgreSQL Database",
+                    "type": "database",
+                    "criticality": "critical"
+                },
+                {
+                    "name": "Redis Cache", 
+                    "type": "cache",
+                    "criticality": "high"
+                }
+            ]
+        },
+        {
+            "serverId": "crm-db-01",
+            "serverName": "CRM Database",
+            "serverType": "Linux", 
+            "metrics": {
+                "cpu": {
+                    "cores": 24,
+                    "utilization": 88
+                },
+                "memory": {
+                    "total": 98304,
+                    "used": 88473
+                },
+                "storage": {
+                    "total": 1638400,
+                    "used": 1392640
+                },
+                "network": {
+                    "bandwidth": 2500
+                }
+            },
+            "applications": [
+                {
+                    "name": "PostgreSQL",
+                    "version": "14.2",
+                    "type": "database",
+                    "status": "running"
+                }
+            ]
+        },
+        {
+            "serverId": "mail-01", 
+            "serverName": "Mail Server",
+            "serverType": "Linux",
+            "metrics": {
+                "cpu": {
+                    "cores": 8,
+                    "utilization": 65
+                },
+                "memory": {
+                    "total": 32768,
+                    "used": 26214
+                },
+                "storage": {
+                    "total": 409600,
+                    "used": 307200
+                },
+                "network": {
+                    "bandwidth": 1200
+                }
+            },
+            "applications": [
+                {
+                    "name": "Postfix",
+                    "version": "3.6.4",
+                    "type": "mail",
+                    "status": "running"
+                },
+                {
+                    "name": "Dovecot",
+                    "version": "2.3.16",
+                    "type": "mail",
+                    "status": "running"
+                }
+            ]
+        }
+    ]
+ }
